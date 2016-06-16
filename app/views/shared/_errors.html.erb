@@ -1,0 +1,5 @@
+<% unless @errors.nil? %>
+  <% @errors.full_messages.each do |error| %>
+    <%= error %><br>
+  <% end %>
+<% end %>

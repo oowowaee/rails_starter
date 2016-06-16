@@ -1,0 +1,11 @@
+<h1><%= t('user.heading') %></h1>
+
+<%= link_to t('user.add'), new_admin_user_url %>
+
+<% @users.each do |user| %>
+  <p>
+    <%= link_to "#{user.name}, #{user.email}", admin_user_url(user) %>
+  </p>
+<% end %>
+
+<%= paginate @users %>

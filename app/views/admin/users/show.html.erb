@@ -1,0 +1,7 @@
+<h1><%= t('user.edit') %></h1>
+
+<%= render 'shared/errors' %>
+
+<%= form_for :user, url: admin_user_path(@user), method: :patch do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>
+<% end %>

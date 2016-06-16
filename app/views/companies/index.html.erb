@@ -1,0 +1,11 @@
+<h1><%= t('company.heading') %></h1>
+
+<%= link_to t('company.add'), new_company_url %>
+
+<% @companies.each do |company| %>
+  <p>
+    <%= link_to "#{company.name}, #{company.contact}", company %>
+  </p>
+<% end %>
+
+<%= paginate @companies %>
