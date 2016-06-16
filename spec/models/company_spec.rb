@@ -15,7 +15,7 @@ RSpec.describe Company, type: :model do
     end
 
     it "should require a minimum length" do
-      company.name = nil
+      company.name = 'abcd'
       expect(company).not_to be_valid      
     end
   end

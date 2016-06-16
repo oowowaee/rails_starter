@@ -49,45 +49,50 @@ RSpec.describe Admin::UsersController, type: :controller do
     end
 
     describe "create" do
-      xit "should let us create a company" do
-        expect(company).to be_valid      
+      it "should let us create a user" do
         expect {
-          post :create, :company => company.attributes
-        }.to change{ Company.count }.by(1)
+          post :create, :user => {password: 'abcdefg', name: 'Patrick', email: 'patrick@sucks.com', role: 2}
+        }.to change{ User.count }.by(1)
         expect(response.status).to eq(302)
-        expect(response).to redirect_to(companies_path)
+        expect(response).to redirect_to(admin_users_path)
       end
 
-      xit "should set the error array" do
-        company.name = nil
-        expect(company).not_to be_valid      
+      it "should set the error array" do
+        user_attributes = {password: 'abcdefg', name: 'Patrick', email: nil, role: 2}
+        user = User.new(user_attributes)
+        expect(user).not_to be_valid      
         expect {
-          post :create, :company => company.attributes
+          post :create, :user => user_attributes
         }.to change{ Company.count }.by(0)
-        expect(assigns(:errors).size).to eq(2)
+        expect(assigns(:errors).size).to eq(1)
         expect(response.status).to eq(200)
         expect(response).to render_template(:new)
       end
     end
 
     describe "update" do
-      xit "should let us edit a company" do
-        expect(company).to be_valid      
-        company.name = company.name + "_new"    
+      it "should let us edit a user" do
+        expect(user).to be_valid   
+        new_user_name = user.name + "_new"       
+        user.name = new_user_name
         expect {
-          patch :update, id: company.id, :company => company.attributes
-        }.to change{ Company.count }.by(0)
+          patch :update, id: user.id, :user => user.attributes
+        }.to change{ User.count }.by(0)
+        user.reload
+        expect(user.name).to eq(new_user_name)
         expect(response.status).to eq(302)
-        expect(response).to redirect_to(companies_path)
+        expect(response).to redirect_to(admin_users_path)
       end
 
-      xit "should set the error array" do
-        company.name = nil
-        expect(company).not_to be_valid      
+      it "should set the error array" do
+        user.email = nil
+        expect(user).not_to be_valid      
         expect {
-          patch :update, id: company.id, :company => company.attributes
-        }.to change{ Company.count }.by(0)
-        expect(assigns(:errors).size).to eq(2)
+          patch :update, id: user.id, :user => user.attributes
+        }.to change{ User.count }.by(0)
+        user.reload
+        expect(user.email).not_to be_nil
+        expect(assigns(:errors).size).to eq(1)
         expect(response.status).to eq(200)
         expect(response).to render_template(:show)
       end
