@@ -13,7 +13,6 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     @user = User.find(params[:id])
-   
     if @user.update(user_params)
       redirect_to admin_users_path
     else
@@ -23,9 +22,9 @@ class Admin::UsersController < Admin::BaseController
   end
 
 	def create
-    @user = User.create(user_params)
-
-    if @user
+    @user = User.new(user_params)
+    if @user.valid?
+      @user.save
       flash[:success] = "User created"
       redirect_to admin_users_path
     else

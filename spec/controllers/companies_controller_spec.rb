@@ -41,7 +41,7 @@ RSpec.describe CompaniesController, type: :controller do
         expect {
           post :create, :company => company.attributes
         }.to change{ Company.count }.by(0)
-        expect(assigns(:errors).size).to eq(2)
+        expect(assigns(:errors).size).to eq(2)            #Name too short, and name cannot be blank
         expect(response.status).to eq(200)
         expect(response).to render_template(:new)
       end
@@ -49,11 +49,14 @@ RSpec.describe CompaniesController, type: :controller do
 
     describe "update" do
       it "should let us edit a company" do
-        expect(company).to be_valid      
-        company.name = company.name + "_new"    
+        expect(company).to be_valid     
+        new_company_name = company.name + "_new"  
+        company.name = new_company_name
         expect {
           patch :update, id: company.id, :company => company.attributes
         }.to change{ Company.count }.by(0)
+        company.reload
+        expect(company.name).to eq(new_company_name)
         expect(response.status).to eq(302)
         expect(response).to redirect_to(companies_path)
       end
@@ -64,7 +67,9 @@ RSpec.describe CompaniesController, type: :controller do
         expect {
           patch :update, id: company.id, :company => company.attributes
         }.to change{ Company.count }.by(0)
-        expect(assigns(:errors).size).to eq(2)
+        company.reload
+        expect(company.name).not_to be_nil
+        expect(assigns(:errors).size).to eq(2)            #Name too short, and name cannot be blank
         expect(response.status).to eq(200)
         expect(response).to render_template(:show)
       end
