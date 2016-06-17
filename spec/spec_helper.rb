@@ -24,10 +24,10 @@ require 'simplecov'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 #Open the broswer when running the E2E tests
-# Capybara.configure do |config|
-#   config.run_server = true          
-#   config.default_driver = :selenium
-# end
+Capybara.configure do |config|
+  config.run_server = true       
+  config.default_driver = :selenium
+end
 
 SimpleCov.start
 

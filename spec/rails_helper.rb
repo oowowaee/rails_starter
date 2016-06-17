@@ -37,12 +37,17 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers,           :type => :controller
   config.extend ControllerMacros,               :type => :controller
   config.include FeatureMacros,                 :type => :feature
+  config.include AbstractController::Translation
 
+  config.before(:each) do |example|
+    ActionMailer::Base.deliveries.clear
+  end
+  
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  # Capybara fails without this
-  config.use_transactional_fixtures = true
+  # Capybara fails with this - we're using database_cleaner instead
+  config.use_transactional_fixtures = false
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
