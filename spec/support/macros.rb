@@ -17,9 +17,20 @@ module ControllerMacros
 end
 
 module FeatureMacros
-  def sign_in(user)
+  def login_user(user)
+    visit new_user_session_path
+
     fill_in("user_email", with: user.email)
     fill_in("user_password", with: user.password)
-    click_button("Log in")
+    click_button(t('form.login'))
+  end
+
+  def visit_activation_link
+    link = ActionMailer::Base.deliveries.last.body.raw_source
+    link_start = link.index("3000")
+    link = link[link_start + 4, link.length]
+    link_end = link.index('"')
+    link = link[0, link_end]
+    visit link
   end
 end

@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.10'
-gem 'pg'
+gem 'pg'                            #Db
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass'                #Bootstrap for responsive styling
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -24,10 +24,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'active_model_serializers', '~> 0.10.0'
 
-gem 'devise'
-gem 'pundit'
-gem 'kaminari'
-gem 'delayed_job_active_record'
+gem 'devise'                        #Authentication
+gem 'pundit'                        #Authorization
+gem 'kaminari'                      #Pagination
+gem 'delayed_job_active_record'     #Background job queueing
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -44,23 +44,24 @@ gem 'delayed_job_active_record'
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'annotate'
-  gem 'meta_request'  
-  gem 'daemons'
+  gem 'annotate'                    #Annotates model files with db schema
+  gem 'meta_request'                #Used by rails panel
+  gem 'daemons'                     #Used for running Delayed Jobs in development
 end
 
 group :test do
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'simplecov'
+  gem 'database_cleaner'            #Cleans the database inbetween tests
+  gem 'capybara'                    #E2E test framework
+  gem 'selenium-webdriver'          #Driver for Capybara
+  gem 'simplecov'                   #Test coverage reporting
 end
 
 group :test, :development do
-  gem 'mailcatcher'
+  gem 'mailcatcher'                 #Catches emails
   gem 'byebug'
-  gem 'rspec'
+  gem 'rspec'                       #Test framework
   gem 'rspec-mocks'
   gem 'rspec-rails'
-  gem 'factory_girl'
-  gem 'faker'
+  gem 'factory_girl'                #Creates factories for quickly generating model instances
+  gem 'faker'                       #Generates fake data for testing
 end

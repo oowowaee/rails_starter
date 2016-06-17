@@ -33,6 +33,8 @@ en:
     add: "Add company"
     new: "New company"
     edit: "Edit company"
+  form:
+    login: "Log in"
   helpers:
     label:
       company:
@@ -45,6 +47,7 @@ en:
         role: "Role"
     submit:
       create: "Create %{model}"
+      user:
   user:
     heading: "Users"
     add: "Add user"
