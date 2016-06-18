@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'spec_helper'
 require 'capybara/rspec'
 
-RSpec.describe 'a test to check you can navigate the lists' do
+RSpec.describe 'a test to check you can navigate the lists', :js => true do
   let!(:companies)      { create_list(:company, 5) }
   let!(:user)           { create(:user) }
   let!(:admin)          { create(:admin) }

@@ -49,7 +49,7 @@ group :development do
   gem 'spring'
   gem 'annotate'                    #Annotates model files with db schema
   gem 'meta_request'                #Used by rails panel
-  gem 'daemons'                     #Used for running Delayed Jobs in development
+  gem 'daemons'                     #Used for running Delayed Jobs 
 end
 
 group :test do
@@ -57,14 +57,15 @@ group :test do
   gem 'capybara'                    #E2E test framework
   gem 'selenium-webdriver'          #Driver for Capybara
   gem 'simplecov'                   #Test coverage reporting
-end
-
-group :test, :development do
-  gem 'mailcatcher'                 #Catches emails
-  gem 'byebug'
   gem 'rspec'                       #Test framework
   gem 'rspec-mocks'
   gem 'rspec-rails'
+end
+
+group :test, :development do
+  gem "teaspoon-jasmine"            #Javascript unit tests
+  gem 'mailcatcher'                 #Catches emails
+  gem 'byebug'
   gem 'factory_girl'                #Creates factories for quickly generating model instances
   gem 'faker'                       #Generates fake data for testing
 end

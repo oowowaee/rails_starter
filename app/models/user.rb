@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
     role == 2
   end
 
+  def send_devise_notification(notification, *args)
+    devise_mailer.delay.send(notification, self, *args)
+  end
+
   #https://github.com/plataformatec/devise/wiki/How-To:-Override-confirmations-so-users-can-pick-their-own-passwords-as-part-of-confirmation-activation
   # new function to set the password without knowing the current 
   # password used in our confirmation controller. 

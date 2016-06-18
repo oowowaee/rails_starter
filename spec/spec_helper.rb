@@ -29,6 +29,8 @@ Capybara.configure do |config|
   config.default_driver = :selenium
 end
 
+Delayed::Worker.delay_jobs = false
+
 SimpleCov.start
 
 Kaminari.configure do |config|
@@ -46,6 +48,9 @@ RSpec.configure do |config|
   config.before(:suite) do
     FactoryGirl.find_definitions
   end
+
+  config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
 
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`

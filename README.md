@@ -1,7 +1,13 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Starter code for rails app.
+
+Devise registerable is removed, and confirmation requires password creation by the user.
+
+Devise mailer uses delayed jobs to queue emails in the background.
+
+Bootstrap, notifications (pnotify) enabled.
+
 
 **Checkout repo**
 
@@ -44,6 +50,8 @@ application up and running.
 
     Call .delay.method(params) on any object and it will be processed in the background.
 
+    rake jobs:work in development 
+
     RAILS_ENV=production bin/delayed_job start
     RAILS_ENV=production bin/delayed_job stop
 
@@ -79,12 +87,13 @@ application up and running.
       
   Rspec
   
-  Capybara        
-      [Cheat sheet](https://gist.github.com/zhengjia/428105)
+  Capybara [Cheat sheet](https://gist.github.com/zhengjia/428105)
 
 
 **Other tools**
 
   [sublime 3](https://www.sublimetext.com/3)
+
   [zenhub](https://www.zenhub.com/)
+  
   [How to link issue with commit on github](http://stackoverflow.com/questions/1687262/link-to-the-issue-number-on-github-within-a-commit-message)

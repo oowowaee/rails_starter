@@ -22,18 +22,17 @@ class CompaniesController < ApplicationController
     end
   end
 
-	def create
+  def create
     @company = Company.new(company_params)
 
-    if @company.valid?
-      @company.save
+    if @company.save
       flash[:success] = "Company created"
       redirect_to companies_path
     else
       @errors = @company.errors
       render :new
     end
-	end
+  end
 
   private
   def company_params
