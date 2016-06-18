@@ -1,3 +1,13 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: site
+  pool: 5
+  username: site_user
+  password: siteuser
+  host: localhost
+  port: 5432
+
 development:
   adapter: postgresql
   encoding: unicode

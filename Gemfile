@@ -29,6 +29,9 @@ gem 'pundit'                        #Authorization
 gem 'kaminari'                      #Pagination
 gem 'delayed_job_active_record'     #Background job queueing
 
+gem 'pnotify-rails'                 #JS notifications
+gem 'unobtrusive_flash', '>=3'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

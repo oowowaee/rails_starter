@@ -9,6 +9,9 @@ application up and running.
 
   Ideally you should install the Chrome extension for Rails Panel (see debugging section).
 
+  To run in the production environment, you'll need to 
+      export SECRET_KEY_BASE=
+
 **Creating a user**
 
   You can create one from the command line:
