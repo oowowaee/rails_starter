@@ -5,6 +5,8 @@ gem 'rails', '4.1.10'
 gem 'pg'                            #Db
 
 gem 'bootstrap-sass'                #Bootstrap for responsive styling
+gem 'bootswatch-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
