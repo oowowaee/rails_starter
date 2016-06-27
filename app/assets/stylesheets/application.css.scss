@@ -10,23 +10,20 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
 
 @import "bootstrap-sprockets";
+
+// You can also override variables here
+//$border-radius-base:        0px !default;
+
+// Import variables
+@import "bootswatch/yeti/variables";
+
 @import "bootstrap";
 
-/* Add the classes used by devise to mimic the native bootstrap styles. */
-.alert-notice {
-  background-color: $alert-success-bg;
-  border-color: $alert-success-border;
-  color: $alert-success-text;
-}
+// And finally bootswatch style itself
+@import "bootswatch/yeti/bootswatch";
 
-/* Add the classes used by devise to mimic the native bootstrap styles. */
-.alert-alert {
-  background-color: $alert-danger-bg;
-  border-color: $alert-danger-border;
-  color: $alert-danger-text;
-}
+@import "headerfooter";
+@import "projects";
